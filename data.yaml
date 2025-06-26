@@ -1,0 +1,14 @@
+# Create data.yaml file for YOLOv8 training
+data_yaml_content = """
+train: /kaggle/input/cricket-ball-dataset-for-yolo/cricket_ball_data/train  # Path to training images
+val: /kaggle/input/cricket-ball-dataset-for-yolo/cricket_ball_data/valid     # Path to validation images
+nc: 1                                 # Number of classes (1 for cricket ball)
+names:
+  0: cricketBall                     # Name of class 0 is 'cricketBall'
+"""
+
+# Save the content to data.yaml file
+with open('/content/data.yaml', 'w') as f:
+    f.write(data_yaml_content)
+
+print("data.yaml file created successfully!")
