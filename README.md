@@ -1,9 +1,17 @@
-Cricket Ball Tracking System
-Project Overview
-This project is focused on tracking a cricket ball in real-time during a match. I built a system that detects and tracks the ball using computer vision techniques. The main tools used for this project are the YOLOv8 object detection model and Optical Flow, which work together to detect and follow the ball’s movement across the video.
+🏏 Cricket Ball Tracking System
+A system for tracking a cricket ball in real-time during a match. The system uses YOLOv8 for detecting the ball and Optical Flow for tracking its movement and predicting its trajectory.
 
-How I Did It
-1. Detecting the Cricket Ball with YOLOv8
-To start, I trained a YOLOv8 model on a custom dataset of cricket ball images. YOLOv8 is an efficient object detection model, designed to quickly find and identify objects in images. In this case, I used it to locate the cricket ball in each video frame.
 
-For training, I used the Cricket Ball Dataset for YOLO, available on Kaggle. The dataset was split into training and validation sets. Here's the data.yaml file that I used to configure the dataset for training:
+Features
+Detects the cricket ball in each video frame using YOLOv8.
+
+Tracks the ball’s movement across frames with Optical Flow.
+
+Predicts and visualizes the ball’s trajectory in real-time.
+
+Provides insights into the ball’s movement during the match.
+
+How to run it on your own machine
+Clone the repository:
+
+If you haven’t cloned the repository yet, do so by running:
