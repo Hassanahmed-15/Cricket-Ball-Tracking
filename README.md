@@ -1,53 +1,76 @@
 # 🏏 Cricket Ball Tracking System
 
-This project tracks a **cricket ball** in real-time during a match using computer vision techniques. The system first detects the ball using **YOLOv8** and then tracks its movement using **Optical Flow** to predict its trajectory.
+This project tracks a **cricket ball in real-time** during a match using advanced computer vision techniques.  
+It detects the ball using **YOLOv8** and then uses **Optical Flow** to track and predict its trajectory.
 
-## Approach
+---
 
-### 1. **Object Detection with YOLOv8**
+## 🚀 Approach
 
-The first step involved training the **YOLOv8** model on a custom dataset of cricket ball images. YOLOv8 is a powerful and efficient object detection model, which makes it ideal for real-time applications like this one.
+### **1. Object Detection with YOLOv8**
+The first step involves training the **YOLOv8** model on a custom dataset of cricket ball images.  
+YOLOv8 is known for its high speed and accuracy, making it perfect for real-time detection tasks.
 
-For training, I used the **Cricket Ball Dataset for YOLO**, available on **Kaggle**. The dataset was split into **training** and **validation** sets, and I used YOLOv8 to train the model to recognize the cricket ball. Here's the **`data.yaml`** file that I used to configure the dataset paths:
+- I trained YOLOv8 on the **Cricket Ball Dataset for YOLO** (available on **Kaggle**).  
+- The dataset was split into **training** and **validation** sets.  
+- YOLOv8 was configured to detect just **one class**: the cricket ball.
+
+Here’s the `data.yaml` I used:
 
 ```yaml
 train: /kaggle/input/cricket-ball-dataset-for-yolo/cricket_ball_data/train  # Path to training images
-val: /kaggle/input/cricket-ball-dataset-for-yolo/cricket_ball_data/valid     # Path to validation images
-nc: 1                                 # Number of classes (1 for cricket ball)
+val: /kaggle/input/cricket-ball-dataset-for-yolo/cricket_ball_data/valid    # Path to validation images
+nc: 1                                                                      # Number of classes (1 for cricket ball)
 names:
-  0: cricketBall                     # Name of class 0 is 'cricketBall'
-The above configuration file specifies:
+  0: cricketBall                                                           # Name of class 0 is 'cricketBall'
+```
 
-train: The location of the training images.
+This configuration file specifies:
+- **train:** Path to training images.  
+- **val:** Path to validation images.  
+- **nc:** Number of classes (1, since we only detect the cricket ball).  
+- **names:** The class name (`cricketBall`).
 
-val: The location of the validation images.
+---
 
-nc: Number of classes (1, as we're detecting only the cricket ball).
+### **2. Tracking with Optical Flow**
+Once YOLOv8 detects the cricket ball in each video frame, the next step is **tracking**.
 
-names: The name of the class (in this case, cricketBall).
+- I implemented **Optical Flow**, a classic technique in computer vision, to track the motion of the ball between consecutive frames.  
+- Optical Flow estimates how each pixel moves from one frame to the next, allowing accurate motion tracking.  
+- This approach helps to **predict the trajectory** even when the ball is moving fast or changing direction.
 
-2. Tracking with Optical Flow
-Once the cricket ball is detected in each frame by YOLOv8, the next step is to track its movement across frames. For this, I used Optical Flow.
+---
 
-Optical Flow is a technique in computer vision that tracks the motion of objects by analyzing the movement of pixels between consecutive frames. It works by estimating how each pixel has moved from one frame to the next. This allows the system to predict the ball's path even when it moves quickly or changes direction.
+### **3. Visualizing the Final Output**
+The system visualizes the cricket ball’s trajectory on the video in **real-time**:
+- YOLOv8 detects the ball in each frame.
+- Optical Flow continuously tracks its movement.
+- A **trajectory line** is drawn to show the ball’s path, speed, and direction over time.
 
-The ball’s movement is tracked frame-by-frame, and the Optical Flow technique helps predict its trajectory over time.
+---
 
-3. Final Output
-The system then visualizes the ball’s trajectory on the video, showing how the ball moves over time. This visualization provides a clear representation of the ball's movement path throughout the match, offering valuable insights into its speed and direction.
+### **4. Video Demo**
+Here’s a demo of the system in action:
 
-4. Video Demo
-Here’s the demo video where you can see the system in action:
+**Cricket Ball Tracking Video:**
+- YOLOv8 detects the ball in each frame.  
+- Optical Flow tracks the motion frame-by-frame.  
+- The ball’s trajectory is visualized live on the video.
 
-Cricket Ball Tracking Video
+---
 
-In this video:
+## 🎯 Conclusion
+This project combines the power of **YOLOv8** and **Optical Flow** to track and analyze a cricket ball in real-time.  
+It can predict the trajectory and visualize the movement, making it a **valuable tool for sports analytics**.  
+With further enhancements, this can be used to analyze metrics like **speed, spin, and path prediction** during matches.
 
-YOLOv8 detects the cricket ball in each frame.
+---
 
-Optical Flow tracks its motion and predicts its path.
+## 🛠️ Tech Stack
+- **YOLOv8** for object detection  
+- **Optical Flow** for motion tracking  
+- **OpenCV** for video processing  
+- **Python** as the primary programming language  
 
-The ball's trajectory is visualized in real-time.
-
-Conclusion
-This project demonstrates how YOLOv8 and Optical Flow can be combined to track a cricket ball in real-time, predicting its trajectory and visualizing its movement during the match. The system has potential applications in sports analytics, helping to analyze the ball's path, speed, and movement during a game
+---
